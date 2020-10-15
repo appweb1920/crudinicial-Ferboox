@@ -14,7 +14,8 @@ class PuntosDeReciclajeController extends Controller
      */
     public function index()
     {
-        //
+        $puntos = PuntoDeReciclaje::all();
+        return view('vistasReciclaje/inicioReciclaje')->with('puntos',$puntos);
     }
 
     /**
@@ -35,7 +36,14 @@ class PuntosDeReciclajeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $punto = new PuntoDeReciclaje;
+        $punto->horaApertura=$request->horaApertura;
+        $punto->horaSalida=$request->horaSalida;
+        $punto->direccion=$request->direccion;
+        $punto->tipoBasura=$request->tipoBasura;
+        $punto->save();
+
+        return redirect('/puntosReciclaje');
     }
 
     /**
@@ -44,9 +52,10 @@ class PuntosDeReciclajeController extends Controller
      * @param  \App\PuntoDeReciclaje  $puntoDeReciclaje
      * @return \Illuminate\Http\Response
      */
-    public function show(PuntoDeReciclaje $puntoDeReciclaje)
+    public function show($id)
     {
-        //
+        $punto = PuntoDeReciclaje::find($id);
+        return view('vistasReciclaje/detallePunto')->with('punto',$punto);
     }
 
     /**
@@ -69,9 +78,26 @@ class PuntosDeReciclajeController extends Controller
      */
     public function update(Request $request, PuntoDeReciclaje $puntoDeReciclaje)
     {
-        //
+       
+
     }
 
+    public function guardaEdicion(Request $request)
+    {
+        $punto = PuntoDeReciclaje::find($request->id);
+        
+        $punto->direccion = $request->direccion;
+        $punto->tipoBasura = $request->tipoBasura;
+        $punto->horaApertura = $request->horaApertura;
+        $punto->horaSalida = $request->horaSalida;
+
+        $punto->save();
+    
+        return redirect('/puntosReciclaje');
+
+    }
+
+   
     /**
      * Remove the specified resource from storage.
      *

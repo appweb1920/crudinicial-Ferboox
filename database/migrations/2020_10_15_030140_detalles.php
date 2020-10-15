@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Recolectores extends Migration
+class Detalles extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class Recolectores extends Migration
      */
     public function up()
     {
-        Schema::create('recolectores', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->string('diasRecoleccion');
+        Schema::create('detalles', function (Blueprint $table) {
+            $table->unsignedBigInteger('punto_id');
+            $table->unsignedBigInteger('recolector_id');
+            $table->foreign('punto_id')->references('id')->on('puntos');
+            $table->foreign('recolector_id')->references('id')->on('recolectores');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class Recolectores extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recolectores');
+        Schema::dropIfExists('detalles');
     }
 }

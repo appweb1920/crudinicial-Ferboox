@@ -14,4 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',function () {return view('index');});
-Route::get('/puntosReciclaje',function () {return view('vistasReciclaje/inicioReciclaje');});
+
+//Puntos de Reciclaje
+Route::get('/puntosReciclaje',"PuntosDeReciclajeController@index");
+Route::post('/registroPunto',"PuntosDeReciclajeController@store");
+Route::get('/actualizaPunto/{id}','PuntosDeReciclajeController@show');
+Route::post('/actualizaPunto/guardaPunto','PuntosDeReciclajeController@guardaEdicion');
+
+//Recolectores
+Route::get('/recolectores',"RecolectoresController@index");
+Route::post('/registroRecolector',"RecolectoresController@store");
+Route::get('/actualizaRecolector/{id}','RecolectoresController@show');
+Route::post('/actualizaRecolector/guardaPunto','RecolectoresController@guardaEdicion');

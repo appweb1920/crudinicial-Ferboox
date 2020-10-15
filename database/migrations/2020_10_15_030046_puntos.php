@@ -13,7 +13,14 @@ class Puntos extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('puntos', function (Blueprint $table) {
+            $table->id();
+            $table->time('horaApertura');
+            $table->time('horaSalida');
+            $table->string('direccion');
+            $table->string('tipoBasura');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class Puntos extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('puntos');
     }
 }

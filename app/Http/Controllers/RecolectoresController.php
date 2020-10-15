@@ -14,7 +14,8 @@ class RecolectoresController extends Controller
      */
     public function index()
     {
-        //
+        $recolectores = Recolector::all();
+        return view('vistasRecolector/inicioRecolector')->with('recolectores',$recolectores);
     }
 
     /**
@@ -35,7 +36,12 @@ class RecolectoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $recolector = new Recolector;
+        $recolector->nombre=$request->nombre;
+        $recolector->diasRecoleccion=$request->diasRecoleccion;
+        $recolector->save();
+
+        return redirect('/recolectores');
     }
 
     /**
@@ -44,9 +50,10 @@ class RecolectoresController extends Controller
      * @param  \App\Recolector  $recolector
      * @return \Illuminate\Http\Response
      */
-    public function show(Recolector $recolector)
+    public function show($id)
     {
-        //
+        $recolector = Recolector::find($id);
+        return view('vistasRecolector/detalleRecolector')->with('recolector',$recolector);
     }
 
     /**
@@ -70,6 +77,20 @@ class RecolectoresController extends Controller
     public function update(Request $request, Recolector $recolector)
     {
         //
+    }
+
+    public function guardaEdicion(Request $request)
+    {
+        $recolector = Recolector::find($request->id);
+        
+        $recolector->nombre = $request->nombre;
+        $recolector->diasRecoleccion = $request->diasRecoleccion;
+
+
+        $recolector->save();
+    
+        return redirect('/recolectores');
+
     }
 
     /**
