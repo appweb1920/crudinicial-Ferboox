@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\DeatalleRecolector;
+use App\Recolector;
+use App\PuntoDeReciclaje;
+
 use Illuminate\Http\Request;
 
 class DetalleRecolectorController extends Controller
@@ -14,7 +17,6 @@ class DetalleRecolectorController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -35,7 +37,13 @@ class DetalleRecolectorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $detalles = new DeatalleRecolector;;
+        $detalles->punto_id=$request->id_punto;
+        $detalles->recolector_id=$request->id_recolector;
+
+        $detalles->save();
+
+        return redirect('/puntosReciclaje');
     }
 
     /**
@@ -44,9 +52,11 @@ class DetalleRecolectorController extends Controller
      * @param  \App\DeatalleRecolector  $deatalleRecolector
      * @return \Illuminate\Http\Response
      */
-    public function show(DeatalleRecolector $deatalleRecolector)
+    public function show($id)
     {
-        //
+        $recolectores = Recolector::all();
+        $punto = PuntoDeReciclaje::find($id);
+        return view('vistasDetalles/detalles')->with('recolectores',$recolectores)->with('punto',$punto);
     }
 
     /**

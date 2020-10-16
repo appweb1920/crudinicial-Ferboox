@@ -50,7 +50,7 @@
                 @foreach($puntos as $p)  
                 <div class="row mr-3 ml-3 bg-light border-bottom"> 
                     <div class="col text-center">
-                       {{$p->tipoBasura}}
+                       <a href="/detalles/{{$p->id}}">{{$p->tipoBasura}}</a>
                     </div>  
                     <div class="col text-center">
                         {{$p->direccion}}

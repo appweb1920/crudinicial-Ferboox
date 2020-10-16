@@ -26,3 +26,7 @@ Route::get('/recolectores',"RecolectoresController@index");
 Route::post('/registroRecolector',"RecolectoresController@store");
 Route::get('/actualizaRecolector/{id}','RecolectoresController@show');
 Route::post('/actualizaRecolector/guardaPunto','RecolectoresController@guardaEdicion');
+
+//Detalles Recolectores
+Route::get('/detalles/{id}',"DetalleRecolectorController@show");
+Route::post('/detalles/darAlta',"DetalleRecolectorController@store");
