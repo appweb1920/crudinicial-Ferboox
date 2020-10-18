@@ -9,7 +9,7 @@
 <body>
     <!--- Header ------->
     <div class="d-flex p-2 bg-success">
-        <div class="p-2 ml-3 text-white"><a href="/" style="text-decoration:none;color:white;">Inicio</a></div>
+        <div class="mr-auto p-2 ml-3 text-white"><a href="/" style="text-decoration:none;color:white;">Inicio</a></div>
         <div class="p-2 ml-2 text-white"><a href="/puntosReciclaje" style="text-decoration:none;color:white;">Puntos de Reciclaje</a></div>
         <div class="p-2 ml-2 text-white"><a href="/recolectores" style="text-decoration:none;color:white;">Recolectores</a></div>
     </div>
