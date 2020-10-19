@@ -16,8 +16,9 @@
 
 
 .imageTav{
-    display: none !important;
+    display: inline !important;
 }
+
 #ovr{
     overflow: auto;
     height: 240px;
@@ -61,7 +62,7 @@ footer {
         }
                 
         #ovr{
-            height: auto;
+            height: 200px;
         }
 
         .imageTav{

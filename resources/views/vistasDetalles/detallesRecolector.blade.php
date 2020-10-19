@@ -17,41 +17,43 @@
 
     <div class = "row zero">
             <div class="col-sm-2 mt-4 bg-white containerReg shadow-sm">
-                        <h4 class="p-2">Recolectores</h4>
-                        <form class="m-3" action="darAlta" method="POST">
+                        <h4 class="p-2">Puntos</h4>
+                        <form class="m-3" action="darAltaPunto" method="POST">
                             @csrf
-                            <input type="hidden" name="id_punto" value="{{$punto->id}}">
-                            <select name="id_recolector">
-                                @if(!is_null($recolectores))
-                                    @foreach($recolectores as $r)
-                                        <option value="{{$r->id}}">{{$r->nombre}}</option> 
+                            <input type="hidden" name="id_recolector" value="{{$recolector->id}}">
+                            <select name="id_punto">
+                                @if(!is_null($puntos))
+                                    @foreach($puntos as $p)
+                                        <option value="{{$p->id}}">{{$p->direccion}}</option> 
                                     @endforeach
                                 @endif
-                            </select>    
-                            <input type="submit" value="Dar de Alta">      
+                            </select>
+                                
+                            <input class="mt-2" type="submit" value="Dar de Alta">      
                         </form>
             </div>
-
-                <div class="col-sm-9 table-responsive-sm bg-white containerTab" id="ovr">
+            <div class="col-sm-9 table-responsive-sm bg-white containerTab" id="ovr">
                     <!--Tabla de puntos-->
                     <table class="table table-striped ovr">
                         <thead class="thead-dark">
                             <tr class="text-center">
-                                <th scope="col">Nombre</th>
+                                <th scope="col">Dirección</th>
                             </tr>
                         </thead>
                         <tbody>
                         <!--Despliega todos los datos de la tabla puntos-->
-                        @foreach($punto->getRecolectores() as $m)    
+                        @foreach($recolector->getPuntos() as $m)    
                             <tr class="text-center">
                                 <th scope="row">
-                                    {{$m->nombre}}
+                                    {{$m->direccion}}
                                 </th>
                             </tr>
                         @endforeach         
                         </tbody>
                     </table>
                 </div>
+
+                
 
     </div>
 

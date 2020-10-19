@@ -35,9 +35,9 @@ class DetalleRecolectorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeRecolector(Request $request)
     {
-        $detalles = new DeatalleRecolector;;
+        $detalles = new DeatalleRecolector;
         $detalles->punto_id=$request->id_punto;
         $detalles->recolector_id=$request->id_recolector;
 
@@ -46,17 +46,37 @@ class DetalleRecolectorController extends Controller
         return redirect('/puntosReciclaje');
     }
 
+    public function storePunto(Request $request)
+    {
+        $detalles = new DeatalleRecolector;
+        $detalles->punto_id=$request->id_punto;
+        $detalles->recolector_id=$request->id_recolector;
+
+        $detalles->save();
+
+        return redirect('/recolectores');
+    }
+
     /**
      * Display the specified resource.
      *
      * @param  \App\DeatalleRecolector  $deatalleRecolector
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+    public function showRecolectores($id)
     {
         $recolectores = Recolector::all();
         $punto = PuntoDeReciclaje::find($id);
         return view('vistasDetalles/detalles')->with('recolectores',$recolectores)->with('punto',$punto);
+    }
+
+    
+    public function showPuntos($id)
+    {
+        $puntos = PuntoDeReciclaje::all();
+        $recolector = Recolector::find($id);
+        return view('vistasDetalles/detallesRecolector')->with('puntos',$puntos)->with('recolector',$recolector);
     }
 
     /**

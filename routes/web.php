@@ -28,5 +28,7 @@ Route::get('/actualizaRecolector/{id}','RecolectoresController@show');
 Route::post('/actualizaRecolector/guardaPunto','RecolectoresController@guardaEdicion');
 
 //Detalles Recolectores
-Route::get('/detalles/{id}',"DetalleRecolectorController@show");
-Route::post('/detalles/darAlta',"DetalleRecolectorController@store");
+Route::get('/detalles/{id}',"DetalleRecolectorController@showRecolectores");
+Route::get('/detallesRecolector/{id}',"DetalleRecolectorController@showPuntos");
+Route::post('/detalles/darAlta',"DetalleRecolectorController@storeRecolector");
+Route::post('/detallesRecolector/darAltaPunto',"DetalleRecolectorController@storePunto");

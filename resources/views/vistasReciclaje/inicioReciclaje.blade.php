@@ -6,6 +6,19 @@
     <title>Puntos de Reciclaje</title>
     <link rel="stylesheet" href="CSS/basic.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style> 
+    
+    .imageTav{
+            display: inline !important;
+        }
+        @media screen and (max-width: 800px) {
+
+        .imageTav{
+            display: none !important;
+        }
+        
+}
+    </style>
 </head>
 <body>
     <!--- Header ------->
@@ -70,7 +83,7 @@
                     </tbody>
                 </table>
              </div>
-            <div class="col-sm-2" id="imageTab">
+            <div class="col-sm-2 imageTav">
                 <img src="https://media1.giphy.com/media/etKPlfE85HW8udMMDl/giphy.gif" height="250">
             </div>
         </div>

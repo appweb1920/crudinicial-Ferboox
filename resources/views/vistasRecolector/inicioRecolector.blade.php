@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recolectores</title>
-    <link rel="stylesheet" href="CSS/basic.css">
+    <link rel="stylesheet" href="/CSS/basic.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <style> 
-
+    
+    .imageTav{
+            display: inline !important;
+        }
         @media screen and (max-width: 800px) {
 
         .imageTav{
-            display: none;
+            display: none !important;
         }
         
 }
@@ -54,13 +57,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <!--Despliega todos los datos de la tabla puntos-->
                     
+                    <!--Despliega todos los datos de la tabla puntos-->
                     @if(!is_null($recolectores))  
                         @foreach($recolectores as $r)  
                         <tr class="text-center">
                             <th scope="row">
-                                <a href="/detalles/{{$r->id}}"> {{$r->nombre}}</a>
+                                <a href="/detallesRecolector/{{$r->id}}"> {{$r->nombre}}</a>
                             </th>
                             <td>{{$r->diasRecoleccion}}</td>
                             <td>
