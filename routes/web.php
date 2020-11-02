@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',function () {return view('index');});
 
+Route::get('/i',function () {return view('welcome');});
+
 //Puntos de Reciclaje
 Route::get('/puntosReciclaje',"PuntosDeReciclajeController@index");
 Route::post('/registroPunto',"PuntosDeReciclajeController@store");
@@ -32,3 +34,8 @@ Route::get('/detalles/{id}',"DetalleRecolectorController@showRecolectores");
 Route::get('/detallesRecolector/{id}',"DetalleRecolectorController@showPuntos");
 Route::post('/detalles/darAlta',"DetalleRecolectorController@storeRecolector");
 Route::post('/detallesRecolector/darAltaPunto',"DetalleRecolectorController@storePunto");
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

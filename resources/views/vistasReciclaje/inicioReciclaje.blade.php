@@ -6,6 +6,7 @@
     <title>Puntos de Reciclaje</title>
     <link rel="stylesheet" href="CSS/basic.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
     <style> 
     
     .imageTav{
@@ -21,6 +22,8 @@
     </style>
 </head>
 <body>
+  
+
     <!--- Header ------->
     <div class="d-flex p-2 bg-success">
         <div class="mr-auto p-2 ml-3 text-white"><a href="/" style="text-decoration:none;color:white;">Inicio</a></div>
@@ -33,19 +36,23 @@
         <h1 class=" text-center text-blue p-4">Puntos de Reciclaje</h1>
     </div>    
 
-    <div class = "row zero">
-            <div class="col-sm-4 bg-white containerReg shadow-sm">
-                        <h4 class="p-2">Registrate</h4>
-                        <form class="m-3" action="/registroPunto" method="POST">
-                            @csrf
-                            <div class="mb-2"><span>Horario Apertura </span><input type="time" name="horaApertura"></div>
-                            <div class="mb-2"><span> Horario Cierre </span><input type="time" name="horaSalida"></div>
-                            <div class="mb-2"><span> Dirección </span><input type="text" name="direccion"></div>
-                            <div class="mb-2"><span> Tipo de Basura </span><input type="text" name="tipoBasura"></div>
-                            <input class="sumb" type="submit">
-                        </form>
-            </div>
-    </div>
+    <!---Autenticación de usuario--->
+    @if($usuario->tipo == 1)
+        <div class = "row zero">
+                <div class="col-sm-4 bg-white containerReg shadow-sm">
+                            <h4 class="p-2">Registrate</h4>
+                            <form class="m-3" action="/registroPunto" method="POST">
+                                @csrf
+                                <div class="mb-2"><span>Horario Apertura </span><input type="time" name="horaApertura"></div>
+                                <div class="mb-2"><span> Horario Cierre </span><input type="time" name="horaSalida"></div>
+                                <div class="mb-2"><span> Dirección </span><input type="text" name="direccion"></div>
+                                <div class="mb-2"><span> Tipo de Basura </span><input type="text" name="tipoBasura"></div>
+                                <input class="sumb" type="submit">
+                            </form>
+                </div>
+        </div>
+    @endif
+
         <div class="row zero">
             <div class="col-sm-9 table-responsive-sm bg-white containerTab" id="ovr">
                 <!--Tabla de puntos-->

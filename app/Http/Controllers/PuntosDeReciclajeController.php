@@ -3,19 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\PuntoDeReciclaje;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class PuntosDeReciclajeController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+   
+  
     public function index()
-    {
+    {   
+        $user = Auth::user();
         $puntos = PuntoDeReciclaje::all();
-        return view('vistasReciclaje/inicioReciclaje')->with('puntos',$puntos);
+
+        if(is_null($user))
+            return view('auth/login');
+        else
+            if(!is_null($user->tipo))
+                return view('vistasReciclaje/inicioReciclaje')
+                ->with('puntos',$puntos)
+                ->with('usuario',$user);
     }
 
     /**
@@ -78,8 +93,9 @@ class PuntosDeReciclajeController extends Controller
      */
     public function update(Request $request, PuntoDeReciclaje $puntoDeReciclaje)
     {
-       
-
+        $puntos = PuntoDeReciclaje::all();
+        $request->user();
+        dd($request);
     }
 
     public function guardaEdicion(Request $request)

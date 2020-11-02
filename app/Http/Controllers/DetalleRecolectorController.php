@@ -6,6 +6,7 @@ use App\DeatalleRecolector;
 use App\Recolector;
 use App\PuntoDeReciclaje;
 
+
 use Illuminate\Http\Request;
 
 class DetalleRecolectorController extends Controller

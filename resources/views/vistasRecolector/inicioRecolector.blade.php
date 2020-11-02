@@ -33,17 +33,20 @@
         <h1 class=" text-center text-blue">Recolectores</h1>
     </div>    
 
-    <div class = "row zero">
-            <div class="col-sm-4 bg-white containerReg shadow-sm">
-                        <h4 class="p-2">Registrate</h4>
-                        <form class="m-3" action="/registroRecolector" method="POST">
-                            @csrf
-                            <div class="mb-2"><span>Nombre: </span><input type="text" name="nombre"></div>
-                            <div class="mb-2"><span> Días de recolección </span><input type="text" name="diasRecoleccion"></div>
-                            <div class="mb-2"><input type="submit" value="Registar"></div>
-                        </form>
-            </div>
-    </div>
+    <!--Autenticación de usuario-->
+    @if($usuario->tipo == 1)
+        <div class = "row zero">
+                <div class="col-sm-4 bg-white containerReg shadow-sm">
+                            <h4 class="p-2">Registrate</h4>
+                            <form class="m-3" action="/registroRecolector" method="POST">
+                                @csrf
+                                <div class="mb-2"><span>Nombre: </span><input type="text" name="nombre"></div>
+                                <div class="mb-2"><span> Días de recolección </span><input type="text" name="diasRecoleccion"></div>
+                                <div class="mb-2"><input type="submit" value="Registar"></div>
+                            </form>
+                </div>
+        </div>
+    @endif
 
     <div class="row zero">
             <div class="col-sm-9 table-responsive-sm bg-white containerTab" id="ovr">

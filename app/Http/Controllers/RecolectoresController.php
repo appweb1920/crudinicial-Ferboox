@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Recolector;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RecolectoresController extends Controller
 {
@@ -14,8 +15,12 @@ class RecolectoresController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         $recolectores = Recolector::all();
-        return view('vistasRecolector/inicioRecolector')->with('recolectores',$recolectores);
+        if(is_null($user))
+            return view('auth/login');
+        else
+            return view('vistasRecolector/inicioRecolector')->with('recolectores',$recolectores)->with('usuario',$user);;
     }
 
     /**
